@@ -23,7 +23,7 @@ const BlogElement = ({
   favorite,
   noFavorite,
 }) => {
-  const { token } = store
+  const { token, authorized } = store
 
   const abr = (text) => {
     if (text.length > 65) {
@@ -65,7 +65,12 @@ const BlogElement = ({
               {abr(`${title}`)}
             </div>
             <div className={style.favorites}>
-              <img alt="heart" src={favorited ? red : white} className={style.heart} onClick={liked} />
+              <img
+                alt="heart"
+                src={favorited ? red : white}
+                className={style.heart}
+                onClick={authorized ? liked : null}
+              />
               <div className={style.favorites_count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
             </div>
           </div>

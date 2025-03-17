@@ -25,7 +25,7 @@ const BlogFullElementAuthorized = ({
   favorite,
   noFavorite,
 }) => {
-  const { userName, token } = store
+  const { userName, token, authorized } = store
 
   const isMarkdown = (text) => {
     const markdownPatterns = [
@@ -89,7 +89,12 @@ const BlogFullElementAuthorized = ({
           <div className={style.title_sting}>
             <div className={style.title}>{title}</div>
             <div className={style.favorites}>
-              <img alt="heart" src={favorited ? red : white} className={style.heart} onClick={liked} />
+              <img
+                alt="heart"
+                src={favorited ? red : white}
+                className={style.heart}
+                onClick={authorized ? liked : null}
+              />
               <div className={style.favorites_count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
             </div>
           </div>
