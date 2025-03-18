@@ -17,8 +17,8 @@ const BlogFullElementAuthorized = ({
   createdAt,
   authorImage,
   favorited,
-  postAbbreviated = '',
-  postFull = '',
+  description = '',
+  body = '',
   history,
   id,
   slug,
@@ -27,7 +27,7 @@ const BlogFullElementAuthorized = ({
 }) => {
   const { userName, token, authorized } = store
 
-  const isMarkdown = (text) => {
+  const validateMarkdown = (text) => {
     const markdownPatterns = [
       /^#/,
       /\[([^\]]+)]\(([^)]+)\)/,
@@ -52,27 +52,26 @@ const BlogFullElementAuthorized = ({
     )
   })
 
-  const fullOrNot =
-    authorUserName === userName ? (
-      <div className={style.edit_delete}>
-        <button
-          className={style.delete}
-          onClick={() => {
-            history.push(`/articles/${id}/delete`)
-          }}
-        >
-          Delete
-        </button>
-        <button
-          className={style.edit}
-          onClick={() => {
-            history.push(`/articles/${id}/edit`)
-          }}
-        >
-          Edit
-        </button>
-      </div>
-    ) : null
+  const addIfAuthorized = (
+    <div className={style.edit_delete}>
+      <button
+        className={style.delete}
+        onClick={() => {
+          history.push(`/articles/${id}/delete`)
+        }}
+      >
+        Delete
+      </button>
+      <button
+        className={style.edit}
+        onClick={() => {
+          history.push(`/articles/${id}/edit`)
+        }}
+      >
+        Edit
+      </button>
+    </div>
+  )
 
   const liked = () => {
     if (!favorited) {
@@ -110,12 +109,10 @@ const BlogFullElementAuthorized = ({
         </div>
       </div>
       <div className={style.abbr_edit_delete}>
-        <div className={style.post_abbreviated}>{postAbbreviated}</div>
-        {fullOrNot}
+        <div className={style.post_abbreviated}>{description}</div>
+        {authorUserName === userName ? addIfAuthorized : null}
       </div>
-      <div className={style.postFull}>
-        {isMarkdown(postFull) ? <ReactMarkdown>{postFull}</ReactMarkdown> : postFull}
-      </div>
+      <div className={style.body}>{validateMarkdown(body) ? <ReactMarkdown>{body}</ReactMarkdown> : body}</div>
     </div>
   )
 }

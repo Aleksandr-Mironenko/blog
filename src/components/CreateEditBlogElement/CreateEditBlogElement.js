@@ -13,9 +13,9 @@ const CreateEditBlogElement = ({
   history,
   title,
   tagList,
-  postAbbreviated,
+  description,
   slug,
-  postFull = '',
+  body = '',
   updateArticle,
   createPost,
 }) => {
@@ -31,16 +31,12 @@ const CreateEditBlogElement = ({
     mode: 'onChange',
     defaultValues: {
       title: title ? title : '',
-      description: postAbbreviated ? postAbbreviated : '',
-      text: postFull ? postFull : '',
+      description: description ? description : '',
+      text: body ? body : '',
       tagList: tagList ? tagList : [''],
     },
   })
 
-  // const [titlee, setTitle] = useState(title ? title : '')
-  // const [description, setDescription] = useState(postAbbreviated ? postAbbreviated : '')
-  // const [text, setText] = useState(postFull ? postFull : '')
-  // const [tags, setTags] = useState(tagList ? tagList : [''])
   const tagsList = watch('tagList')
 
   const addTags = (index, value) => {
@@ -48,38 +44,39 @@ const CreateEditBlogElement = ({
     setValue('tagList', newTags)
   }
 
-  const delTags = (index) => {
+  const deleteTags = (index) => {
     const newTags = [...tagsList.slice(0, index), ...tagsList.slice(index + 1)]
     setValue('tagList', newTags)
   }
 
   const tagsElements = tagsList.map((item, index) => {
-    return <AddTag key={index} item={item} index={index} addTags={addTags} delTags={delTags} />
+    return <AddTag key={index} item={item} index={index} addTags={addTags} deleteTags={deleteTags} />
   })
 
-  const tags = tagsList.filter((item) => item !== '' && item !== ' ')
+  const fiterTagsList = tagsList.filter((item) => item !== '' && item !== ' ')
 
-  //
-  //
-  //
-  //
-  const check = title || postAbbreviated || postFull || tagList
-  const send = (data) => {
+  const checkEditOrCreate = title || description || body || tagList
+  const pressSend = (data) => {
     const post = {
       title: data.title,
-      tagList: tags,
+      tagList: fiterTagsList,
       text: data.text,
       slug: slug,
       description: data.description,
       token: token,
     }
 
-    if (check) {
+    if (checkEditOrCreate) {
       updateArticle(post)
     } else {
       createPost(post)
     }
     history.push('/articles')
+  }
+
+  const addTagInTagList = () => {
+    const newTags = [...tagsList, '']
+    setValue('tagList', newTags)
   }
 
   if (!authorized) {
@@ -88,8 +85,8 @@ const CreateEditBlogElement = ({
 
   return (
     <div className={style.createEditBlogElement}>
-      <form onSubmit={handleSubmit(send)} className={style.blogElement}>
-        <div className={style.legend}>{check ? 'Edit article' : 'Create new article'}</div>
+      <form onSubmit={handleSubmit(pressSend)} className={style.blogElement}>
+        <div className={style.legend}>{checkEditOrCreate ? 'Edit article' : 'Create new article'}</div>
         <label htmlFor="title" className={style.label}>
           Title
         </label>
@@ -98,8 +95,6 @@ const CreateEditBlogElement = ({
           type="text"
           id="title"
           name="title"
-          // value={titlee}
-          // onChange={(e) => setTitle(e.target.value)}
           placeholder="Title"
           className={errors.title ? style.input_false : style.input}
           autoComplete="title"
@@ -114,9 +109,7 @@ const CreateEditBlogElement = ({
           type="text"
           id="description"
           name="description"
-          // value={description}
           placeholder="Title"
-          // onChange={(e) => setDescription(e.target.value)}
           className={errors.description ? style.input_false : style.input}
           autoComplete="description"
         />
@@ -131,10 +124,8 @@ const CreateEditBlogElement = ({
           name="text"
           rows="4"
           cols="500"
-          // onChange={(e) => setText(e.target.value)}
           placeholder="Text"
           className={errors.text ? style.input_false : style.input}
-          // value={text}
           autoComplete="text"
         />
         {errors.text && <span>{errors.text.message}</span>}
@@ -143,14 +134,7 @@ const CreateEditBlogElement = ({
           <div className={style.label}>Tags</div>
           <div className={style.tags_elems_button}>
             <div className={style.tags_el}>{tagsElements}</div>
-            <button
-              type="button"
-              onClick={() => {
-                const newTags = [...tagsList, '']
-                setValue('tagList', newTags)
-              }}
-              className={style.button_add}
-            >
+            <button type="button" onClick={addTagInTagList} className={style.button_add}>
               Add tag
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -8,15 +8,8 @@ import HeaderLogOut from '../Header-log-out'
 
 import style from './index.module.scss'
 
-const Head = ({ store, history, getPosts }) => {
-  const { page, authorized } = store
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      await getPosts(page)
-    }
-    fetchPosts()
-  }, [getPosts, page])
+const Head = ({ store, history }) => {
+  const { authorized } = store
 
   const headerUser = authorized ? <HeaderLogIn /> : <HeaderLogOut />
 

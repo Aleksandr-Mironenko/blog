@@ -8,6 +8,11 @@ import style from './index.module.scss'
 const HeaderLogIn = ({ store, history, logOutCookie }) => {
   const { userName, userPhoto } = store
 
+  const pressLogOut = () => {
+    logOutCookie()
+    history.push('/articles')
+  }
+
   return (
     <div className={style.block_user}>
       <button className={style.create} onClick={() => history.push('/new-article')}>
@@ -17,13 +22,7 @@ const HeaderLogIn = ({ store, history, logOutCookie }) => {
         <div className={style.author_user_name}> {userName}</div>
         <img className={style.author_image} alt="User" src={userPhoto} />
       </div>
-      <button
-        className={style.log_out}
-        onClick={() => {
-          logOutCookie()
-          history.push('/articles')
-        }}
-      >
+      <button className={style.log_out} onClick={pressLogOut}>
         Log Out
       </button>
     </div>

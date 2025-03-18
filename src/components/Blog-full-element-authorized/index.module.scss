@@ -1,5 +1,4 @@
 .blog_full_element{
-  // min-height: 870px;
   width: 941px ;
   margin:26px auto ;
   background-color: white;
@@ -23,12 +22,8 @@
 .info{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
-// .left{
-  // display: flex;
-  // align-items: center;
-// }
 
 .title_sting{
   display: flex;
@@ -41,7 +36,7 @@
   font-size: 20px;
   color: rgb(24, 144, 255);
   line-height: 28px;
-
+  max-width: 700px;
 }
 .favorites {
   margin: 0 13px;
@@ -59,6 +54,8 @@
 .tags {
   display: flex;
   align-items: center; 
+  max-width: 750px;
+  flex-wrap: wrap;
 }
 .right {
   display: flex;
@@ -120,11 +117,11 @@
   background-color: #fff;
 }
 
-.postFull {
+.body {
   color: rgba(0, 0, 0, 0.75);;
   
 }
-.postFull img{
+.body img{
   max-width: 100%;
   
 }

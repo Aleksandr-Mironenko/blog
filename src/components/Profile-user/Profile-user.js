@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-// import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { withRouter, Redirect } from 'react-router-dom'
 
@@ -18,12 +17,7 @@ const ProfileUser = ({ store, saveUserData, history }) => {
     defaultValues: { userName: userName, email: emailAddress, userPhoto: userPhoto },
   })
 
-  // const [userNamee, setUserName] = useState(userName)
-  // const [emailAddresss, setEmailAddress] = useState(emailAddress)
-  // const [passwordd, setPassword] = useState('')
-  // const [userPhotoo, setUserPhoto] = useState(userPhoto)
-
-  const saving = (data) => {
+  const pressSave = (data) => {
     saveUserData({
       userName: data.userName,
       email: data.email,
@@ -43,7 +37,7 @@ const ProfileUser = ({ store, saveUserData, history }) => {
 
   return (
     <div className={style.edit_profile_body}>
-      <form className={style.edit} onSubmit={handleSubmit(saving)}>
+      <form className={style.edit} onSubmit={handleSubmit(pressSave)}>
         <div className={style.edit_profile}>Edit Profile</div>
 
         <label htmlFor="userName" className={style.edit_label}>
@@ -80,7 +74,7 @@ const ProfileUser = ({ store, saveUserData, history }) => {
         <label htmlFor="newPassword" className={style.edit_label}>
           New password
         </label>
-        <input //userName: userName, email: emailAddress, userPhoto: userPhoto
+        <input
           {...register('newPassword', {
             required: 'New password is required',
             minLength: { value: 6, message: 'Password must be at least 6 characters' },
@@ -90,8 +84,6 @@ const ProfileUser = ({ store, saveUserData, history }) => {
           id="newPassword"
           placeholder="New password"
           name="newPassword"
-          // value={passwordd}
-          // onChange={(e) => setPassword(e.target.value)}
           className={errors.newPassword ? style.input_false : style.edit_input}
           autoComplete="new-password"
         />

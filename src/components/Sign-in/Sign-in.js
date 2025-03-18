@@ -8,17 +8,13 @@ import actions from '../actions'
 import style from './index.module.scss'
 
 const SignIn = ({ history, oldUser, getPosts }) => {
-  //
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({ mode: 'onChange' })
 
-  // const [emailAddress, setEmailAddress] = useState('')
-  // const [password, setPassword] = useState('')
-
-  const login = (data) => {
+  const pressLogin = (data) => {
     oldUser({
       email: data.email,
       password: data.password,
@@ -29,7 +25,7 @@ const SignIn = ({ history, oldUser, getPosts }) => {
 
   return (
     <div className={style.signIn_body}>
-      <form className={style.signIn} onSubmit={handleSubmit(login)}>
+      <form className={style.signIn} onSubmit={handleSubmit(pressLogin)}>
         <div className={style.head}>Sign In</div>
 
         <label htmlFor="email" className={style.label}>

@@ -1,4 +1,4 @@
-import React from 'react' //, { useState }
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
@@ -21,9 +21,8 @@ const SignUp = ({ history, newUser, getPosts }) => {
 
   const agree = watch('agree')
   const password = watch('password')
-  // const repeatPassword = watch('repeatPassword')
 
-  const clickCreate = (data) => {
+  const pressCreate = (data) => {
     newUser({
       username: data.username,
       email: data.email,
@@ -35,7 +34,7 @@ const SignUp = ({ history, newUser, getPosts }) => {
 
   return (
     <div className={style.signUp_body}>
-      <form className={style.signUp} onSubmit={handleSubmit(clickCreate)}>
+      <form className={style.signUp} onSubmit={handleSubmit(pressCreate)}>
         <div className={style.head}>Create new account</div>
         <label htmlFor="username" className={style.label}>
           Username

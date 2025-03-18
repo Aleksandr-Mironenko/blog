@@ -13,7 +13,7 @@ const loadingMiddleware = (history) => (store) => {
 
     timer = setTimeout(() => {
       store.dispatch(loadEnd())
-    }, 1000) // Задержка для имитации загрузки
+    }, 1000)
     return () => {
       clearTimeout(timer)
     }
@@ -22,7 +22,7 @@ const loadingMiddleware = (history) => (store) => {
   history.listen(handleLocationChange)
 
   return (next) => (action) => {
-    const result = next(action) // Передача действия следующему middleware или редуктору
+    const result = next(action)
     return result
   }
 }

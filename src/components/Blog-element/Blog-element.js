@@ -17,7 +17,7 @@ const BlogElement = ({
   createdAt,
   authorImage,
   favorited,
-  postAbbreviated,
+  description,
   id,
   slug,
   favorite,
@@ -25,17 +25,32 @@ const BlogElement = ({
 }) => {
   const { token, authorized } = store
 
-  const abr = (text) => {
-    if (text.length > 65) {
-      return text.slice(0, 65) + '...'
+  const wordСutting = (text) => {
+    if (text.length > 50) {
+      return text.slice(0, 50) + '...'
     }
     return text
   }
 
-  const tags = tagList.map((item, index) => {
-    if (item === ' ') {
-      item = ''
+  const tagListWordСutting = () => {
+    const tagsList = tagList.map((item) => {
+      const fomatedItem = item.trimStart().trimEnd()
+      return fomatedItem
+    })
+
+    const tagsString = tagsList.join(' ')
+    const tagsLength = tagsString.length
+    if (tagsLength > 90) {
+      const cuttingString = tagsString.slice(0, 80)
+      const indexLastSpaceInCuttingString = cuttingString.lastIndexOf(' ')
+      const finalCuttingString = cuttingString.slice(0, indexLastSpaceInCuttingString)
+      const filterNoEmptyTags = `${finalCuttingString} ...`.split(' ').filter((item) => item !== '' || item !== ' ')
+      return filterNoEmptyTags
     }
+    return tagList
+  }
+
+  const tags = tagListWordСutting().map((item, index) => {
     return (
       <div className={style.tag} key={index}>
         {item}
@@ -62,7 +77,7 @@ const BlogElement = ({
                 history.push(`/articles/${id}`)
               }}
             >
-              {abr(`${title}`)}
+              {wordСutting(`${title}`)}
             </div>
             <div className={style.favorites}>
               <img
@@ -85,7 +100,7 @@ const BlogElement = ({
           <img className={style.author_image} alt="User" src={authorImage} />
         </div>
       </div>
-      <div className={style.post_abbreviated}>{postAbbreviated}</div>
+      <div className={style.post_abbreviated}>{description}</div>
     </div>
   )
 }
