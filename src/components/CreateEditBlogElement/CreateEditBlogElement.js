@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
@@ -84,9 +83,9 @@ const CreateEditBlogElement = ({
   }
 
   return (
-    <div className={style.createEditBlogElement}>
-      <form onSubmit={handleSubmit(pressSend)} className={style.blogElement}>
-        <div className={style.legend}>{checkEditOrCreate ? 'Edit article' : 'Create new article'}</div>
+    <div className={style.create}>
+      <form onSubmit={handleSubmit(pressSend)} className={style.create__form}>
+        <div className={style.create__legend}>{checkEditOrCreate ? 'Edit article' : 'Create new article'}</div>
         <label htmlFor="title" className={style.label}>
           Title
         </label>
@@ -132,14 +131,14 @@ const CreateEditBlogElement = ({
 
         <div className={style.tags}>
           <div className={style.label}>Tags</div>
-          <div className={style.tags_elems_button}>
-            <div className={style.tags_el}>{tagsElements}</div>
-            <button type="button" onClick={addTagInTagList} className={style.button_add}>
+          <div className={style['create__tags-block']}>
+            <div className={style.create__tags}>{tagsElements}</div>
+            <button type="button" onClick={addTagInTagList} className={style['create__button-add']}>
               Add tag
             </button>
           </div>
         </div>
-        <button disabled={!isValid} type="submit" className={style.button_send}>
+        <button disabled={!isValid} type="submit" className={style['create__button-send']}>
           Send
         </button>
       </form>

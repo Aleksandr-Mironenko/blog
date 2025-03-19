@@ -46,16 +46,16 @@ const BlogFullElementAuthorized = ({
       item = ''
     }
     return (
-      <div className={style.tag} key={index}>
+      <div className={style.full__tag} key={index}>
         {item}
       </div>
     )
   })
 
   const addIfAuthorized = (
-    <div className={style.edit_delete}>
+    <div className={style['delete-edit']}>
       <button
-        className={style.delete}
+        className={style['delete-edit__delete']}
         onClick={() => {
           history.push(`/articles/${id}/delete`)
         }}
@@ -63,7 +63,7 @@ const BlogFullElementAuthorized = ({
         Delete
       </button>
       <button
-        className={style.edit}
+        className={style['delete-edit__edit']}
         onClick={() => {
           history.push(`/articles/${id}/edit`)
         }}
@@ -82,37 +82,37 @@ const BlogFullElementAuthorized = ({
   }
 
   return (
-    <div className={style.blog_full_element}>
-      <div className={style.info}>
-        <div className={style.left}>
-          <div className={style.title_sting}>
-            <div className={style.title}>{title}</div>
+    <div className={style.full}>
+      <div className={style.full__info}>
+        <div className={style.full__left}>
+          <div className={style.full__title}>
+            <div className={style.full__sting}>{title}</div>
             <div className={style.favorites}>
               <img
                 alt="heart"
                 src={favorited ? red : white}
-                className={style.heart}
+                className={style.favorites__heart}
                 onClick={authorized ? liked : null}
               />
-              <div className={style.favorites_count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
+              <div className={style.favorites__count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
             </div>
           </div>
-          <div className={style.tags}>{tagList.length ? tags : null}</div>
+          <div className={style.full__tags}>{tagList.length ? tags : null}</div>
         </div>
-        <div className={style.right}>
-          <div className={style.author_info}>
-            <div className={style.author_user_name}>{authorUserName}</div>
-            <div className={style.time_created}>{createdAt}</div>
+        <div className={style.full__right}>
+          <div className={style.author}>
+            <div className={style.author__username}>{authorUserName}</div>
+            <div className={style['author__time-created']}>{createdAt}</div>
           </div>
           <div></div>
-          <img className={style.author_image} alt="User" src={authorImage} />
+          <img className={style.author__image} alt="User" src={authorImage} />
         </div>
       </div>
-      <div className={style.abbr_edit_delete}>
-        <div className={style.post_abbreviated}>{description}</div>
+      <div className={style['full__el-description']}>
+        <div className={style.full__description}>{description}</div>
         {authorUserName === userName ? addIfAuthorized : null}
       </div>
-      <div className={style.body}>{validateMarkdown(body) ? <ReactMarkdown>{body}</ReactMarkdown> : body}</div>
+      <div className={style.full__body}>{validateMarkdown(body) ? <ReactMarkdown>{body}</ReactMarkdown> : body}</div>
     </div>
   )
 }

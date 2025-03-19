@@ -52,7 +52,7 @@ const BlogElement = ({
 
   const tags = tagListWordСutting().map((item, index) => {
     return (
-      <div className={style.tag} key={index}>
+      <div className={style.element__tag} key={index}>
         {item}
       </div>
     )
@@ -67,12 +67,12 @@ const BlogElement = ({
   }
 
   return (
-    <div className={style.blog_element}>
-      <div className={style.info}>
-        <div className={style.left}>
-          <div className={style.title_sting}>
+    <div className={style.element}>
+      <div className={style.element__info}>
+        <div className={style.element__left}>
+          <div className={style.element__title}>
             <div
-              className={style.title}
+              className={style.element__sting}
               onClick={() => {
                 history.push(`/articles/${id}`)
               }}
@@ -83,24 +83,24 @@ const BlogElement = ({
               <img
                 alt="heart"
                 src={favorited ? red : white}
-                className={style.heart}
+                className={style.favorites__heart}
                 onClick={authorized ? liked : null}
               />
-              <div className={style.favorites_count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
+              <div className={style.favorites__count}>{favorited ? favoritesCount + 1 : favoritesCount}</div>
             </div>
           </div>
-          <div className={style.tags}>{tagList.length ? tags : null}</div>
+          <div className={style.element__tags}>{tagList.length ? tags : null}</div>
         </div>
-        <div className={style.right}>
-          <div className={style.author_info}>
-            <div className={style.author_user_name}>{authorUserName}</div>
-            <div className={style.time_created}>{createdAt}</div>
+        <div className={style.element__right}>
+          <div className={style.author}>
+            <div className={style.author__username}>{authorUserName}</div>
+            <div className={style['author__time-created']}>{createdAt}</div>
           </div>
           <div></div>
-          <img className={style.author_image} alt="User" src={authorImage} />
+          <img className={style.author__image} alt="User" src={authorImage} />
         </div>
       </div>
-      <div className={style.post_abbreviated}>{description}</div>
+      <div className={style.element__description}>{description}</div>
     </div>
   )
 }

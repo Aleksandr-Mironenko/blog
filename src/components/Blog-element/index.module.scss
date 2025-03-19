@@ -1,4 +1,4 @@
-.blog_element{
+.element{
   height: 140px;
   width: 941px ;
   margin:26px auto 0;
@@ -13,7 +13,53 @@
 
 
 
-.tag{
+
+.element__info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// .element__left{
+  // display: flex;
+  // align-items: center;
+// }
+
+.element__title{
+  display: flex;
+  align-items: center;
+}
+
+.element__sting{
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: rgb(24, 144, 255);
+  line-height: 28px;
+}
+
+.favorites {
+  margin: 0 13px;
+  display: flex;
+  align-items: center;
+}
+
+.favorites__heart {
+  height: 16px;
+  margin-right: 5px;
+}
+
+.favorites__count {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 12px;
+}
+
+.element__tags {
+  display: flex;
+  align-items: center; 
+}
+
+.element__tag{
   color:rgba(0, 0, 0, 0.5);
   font-size: 12px;
   border:1px solid rgba(0, 0, 0, 0.5);
@@ -22,71 +68,37 @@
   margin : 4px 8px 4px 0;
   line-height: 15px;
 }
-.info{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-// .left{
-  // display: flex;
-  // align-items: center;
-// }
 
-.title_sting{
+.element__right {
   display: flex;
   align-items: center;
 }
-.title{
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  color: rgb(24, 144, 255);
-  line-height: 28px;
 
-}
-.favorites {
-  margin: 0 13px;
-  display: flex;
-  align-items: center;
-}
-.heart {
-  height: 16px;
-  margin-right: 5px;
-}
-.favorites_count {
-  color: rgba(0, 0, 0, 0.75);
-  font-size: 12px;
-}
-.tags {
-  display: flex;
-  align-items: center; 
-}
-.right {
-  display: flex;
-  align-items: center;
-  // box-sizing: content-box;
-}
-.author_info {
+.author {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.author_user_name {
+
+.author__username {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.85);
 }
-.time_created{
+
+.author__time-created{
   color:rgba(0, 0, 0, 0.5);
   font-size: 12px;
 }
-.author_image{
+
+.author__image{
   width: 46px;
   height: 46px;
   border-radius: 50%;
   margin-left: 12px;
   object-fit: cover
 }
-.post_abbreviated{
+
+.element__description{
   color: rgba(0, 0, 0, 0.75);
   box-sizing: content-box;
   width: 682px;

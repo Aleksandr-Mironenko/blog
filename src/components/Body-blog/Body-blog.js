@@ -15,7 +15,7 @@ const BodyBlog = ({ store, changePage }) => {
   })
 
   return (
-    <div className={style.body_blog}>
+    <div className={style['body-blog']}>
       {elements}
       <Stack spacing={2} sx={{ margin: '26px auto 17px' }}>
         {posts.length > 0 && (
