@@ -13,9 +13,9 @@ const Error = ({ history, errorFetch }) => {
   }
   return (
     <div className={style.error}>
-      <div className={style.text}>Произошла ошибка. Попробуйте обновить страницу</div>
-      <button type="button" className={style.button_noError} onClick={noError}>
-        Вернуться в начало
+      <div className={style.error__text}>Произошла ошибка. Вам точно поможет наша кнопка</div>
+      <button type="button" className={style.error__button} onClick={noError}>
+        Наша кнопка
       </button>
     </div>
   )

@@ -95,10 +95,10 @@ const CreateEditBlogElement = ({
           id="title"
           name="title"
           placeholder="Title"
-          className={errors.title ? style.input_false : style.input}
+          className={errors.title ? style['input-false'] : style.input}
           autoComplete="title"
         />
-        {errors.title && <span>{errors.title.message}</span>}
+        {errors.title && <span className={style['error-message']}>{errors.title.message}</span>}
 
         <label htmlFor="description" className={style.label}>
           Short description
@@ -109,10 +109,10 @@ const CreateEditBlogElement = ({
           id="description"
           name="description"
           placeholder="Title"
-          className={errors.description ? style.input_false : style.input}
+          className={errors.description ? style['input-false'] : style.input}
           autoComplete="description"
         />
-        {errors.description && <span>{errors.description.message}</span>}
+        {errors.description && <span className={style['error-message']}>{errors.description.message}</span>}
 
         <label htmlFor="text" className={style.label}>
           Text
@@ -124,10 +124,10 @@ const CreateEditBlogElement = ({
           rows="4"
           cols="500"
           placeholder="Text"
-          className={errors.text ? style.input_false : style.input}
+          className={errors.text ? style['input-false'] : style.input}
           autoComplete="text"
         />
-        {errors.text && <span>{errors.text.message}</span>}
+        {errors.text && <span className={style['error-message']}>{errors.text.message}</span>}
 
         <div className={style.tags}>
           <div className={style.label}>Tags</div>

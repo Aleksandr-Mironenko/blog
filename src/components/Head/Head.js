@@ -16,14 +16,14 @@ const Head = ({ store, history }) => {
   return (
     <header className={style.header}>
       <div
-        className={style.left}
+        className={style.header__left}
         onClick={() => {
           history.push('/articles')
         }}
       >
         Realworld Blog
       </div>
-      <div className={style.right}>{headerUser}</div>
+      <div className={style.header__right}>{headerUser}</div>
     </header>
   )
 }

@@ -1,96 +1,111 @@
-.signIn_body{
+.signin{
   width: 384px;
   margin:59px auto auto;
   background-color: white;
   box-shadow: 0px 0.61px 2.93px 0px rgba(0, 0, 0, 0.02),0px 1.46px 7.05px 0px rgba(0, 0, 0, 0.03),0px 2.75px 13.27px 0px rgba(0, 0, 0, 0.04),0px 4.91px 23.68px 0px rgba(0, 0, 0, 0.04),0px 9.19px 44.28px 0px rgba(0, 0, 0, 0.05),0px 22px 106px 0px rgba(0, 0, 0, 0.07);
 }
-.signIn{  
+
+.signin__form{  
   margin:48px 32px;
   display: flex;
-  flex-direction: column;}
-.head{
-  color: rgb(38, 38, 38);
-font-family: Roboto;
-font-size: 20px;
-font-weight: 500;
-line-height: 28px;
-align-self: center;
-margin-bottom: 9px;
+  flex-direction: column;
 }
+
+.signin__legend{
+  color: rgb(38, 38, 38);
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  align-self: center;
+  margin-bottom: 9px;
+}
+
 .label{
-  margin:12px 0 2px;
+  margin : 21px 0 2px;
   color: rgb(38, 38, 38);
-font-family: Roboto;
-font-size: 14px;
-line-height: 22px;
- 
-}
-.input{
-height: 40px;
-border: 1px solid rgb(217, 217, 217);
-border-radius: 4px;
-padding: 0 12px;
-font-size: 16px;
-line-height: 24px;
-
-}
-
-::placeholder{
-  color:rgb(191, 191, 191);
-  font-size: 16px;
+  font-size: 14px;
+  height: 22px;
  }
 
- .input:focus{
+ .label{
+  margin:12px 0 2px;
+  color: rgb(38, 38, 38);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+ 
+ .input{
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 16px;
+  line-height: 24px;
+ }
+
+ .input:focus {
   outline: none;
   border-color: rgb(24, 144, 255);
  }
-.button_login{
+ 
+ .input-false{
+  border: 1px solid rgb(245, 34, 45);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.input-false:focus{
+  outline: none;
+  border-color: solid rgb(245, 34, 45);;
+ }
+
+ .error-message{
+  color:rgb(245, 34, 45)
+} 
+
+.signin__button-login{
   margin-top: 21px;
   background-color:rgb(24, 144, 255) ;
   color: white;
- border: 1px solid rgb(24, 144, 255);
+  border: 1px solid rgb(24, 144, 255);
   border-radius: 4px;
-background: rgb(24, 144, 255);
-font-family: Roboto;
-font-size: 16px;
- 
- height: 40px;
-   
-}
-.not_account{font-family: Roboto;
-  font-size: 12px;
- margin-top:8px;
-  line-height: 20px;
- display: flex;
-   align-self: center;
-  }
-.not_account_text{
-  color:rgb(140, 140, 140);
-  margin: 0 0;
-  margin-right: 4px;
-}
-.not_account_link{
-  color:rgb(24, 144, 255);
-   margin: 0 0;
+  background: rgb(24, 144, 255);
+  font-family: Roboto;
+  font-size: 16px;
+  height: 40px;
 }
 
-.button_login:disabled{
+.signin__button-login:disabled{
   background-color: rgb(81, 171, 255);
   color:rgb(220, 220, 220);
   border-color: rgb(117, 188, 255);
 }
  
-.input_false{
-height: 40px;
-border: 1px solid rgb(245, 34, 45);;
-border-radius: 4px;
-padding: 0 12px;
-font-size: 16px;
-line-height: 24px;
+.no-account{
+  font-family: Roboto;
+  font-size: 12px;
+  margin-top:8px;
+  line-height: 20px;
+  display: flex;
+  align-self: center;
 }
 
+.no-account__text{
+  color:rgb(140, 140, 140);
+  margin: 0 0;
+  margin-right: 4px;
+}
 
-.input_false:focus{
-  outline: none;
-  border-color: solid rgb(245, 34, 45); 
+.no-account__link{
+  color:rgb(24, 144, 255);
+  margin: 0 0;
+}
+
+::placeholder{
+  color:rgb(191, 191, 191);
+  font-size: 16px;
  }

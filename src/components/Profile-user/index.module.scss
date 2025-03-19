@@ -1,47 +1,65 @@
  
- .edit_profile_body{
+ .profile{
   width: 384px; 
   margin:59px auto auto;
   background-color: white;
   box-shadow: 0px 0.61px 2.93px 0px rgba(0, 0, 0, 0.02),0px 1.46px 7.05px 0px rgba(0, 0, 0, 0.03),0px 2.75px 13.27px 0px rgba(0, 0, 0, 0.04),0px 4.91px 23.68px 0px rgba(0, 0, 0, 0.04),0px 9.19px 44.28px 0px rgba(0, 0, 0, 0.05),0px 22px 106px 0px rgba(0, 0, 0, 0.07);
  }
- .edit{
+
+ .profile__form{
   margin:48px 32px;
   display: flex;
   flex-direction: column;
-
  }
- .edit_profile{
+
+ .profile__legend{
   align-self: center;
   margin-bottom: 21px;
   font-weight: 500;
-line-height: 28px;
-font-size: 20px;
+  line-height: 28px;
+  font-size: 20px;
  }
- .edit_label{margin:12px 0 2px;
+
+ .label{
+  margin:12px 0 2px;
   color: rgb(38, 38, 38);
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;
-  line-height: 22px;}
+  line-height: 22px;
+}
  
- .edit_input{
+ .input{
   border: 1px solid rgb(217, 217, 217);
-border-radius: 4px;
-padding: 7px 12px;
-font-size: 16px;
-line-height: 24px;
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 16px;
+  line-height: 24px;
  }
 
- .edit_input::placeholder {
-  color: rgb(191, 191, 191);
-
- }
- .edit_input:focus {
+ .input:focus {
   outline: none;
   border-color: rgb(24, 144, 255);
  }
- .button_save{
+ 
+ .input-false{
+  border: 1px solid rgb(245, 34, 45);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.input-false:focus{
+  outline: none;
+  border-color: solid rgb(245, 34, 45);;
+ }
+
+ .error-message{
+  color:rgb(245, 34, 45)
+} 
+
+ .profile__button-save{
   height: 40px;
   border: 1px solid rgb(24, 144, 255);
   border-radius: 4px;
@@ -50,23 +68,12 @@ line-height: 24px;
   margin-top: 21px;
  }
 
- .button_save:disabled{
+ .profile__button-save{
   background-color: rgb(81, 171, 255);
   color:rgb(220, 220, 220);
   border-color: rgb(117, 188, 255);
 }
- 
-.input_false{
-height: 40px;
-border: 1px solid rgb(245, 34, 45);;
-border-radius: 4px;
-padding: 0 12px;
-font-size: 16px;
-line-height: 24px;
-}
 
-
-.input_false:focus{
-  outline: none;
-  border-color: solid rgb(245, 34, 45);;
+::placeholder {
+  color: rgb(191, 191, 191);
  }

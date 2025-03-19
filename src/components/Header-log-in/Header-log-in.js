@@ -14,15 +14,15 @@ const HeaderLogIn = ({ store, history, logOutCookie }) => {
   }
 
   return (
-    <div className={style.block_user}>
-      <button className={style.create} onClick={() => history.push('/new-article')}>
+    <div className={style.autorized}>
+      <button className={style['autorized__new-post']} onClick={() => history.push('/new-article')}>
         Create article
       </button>
-      <div className={style.profile} onClick={() => history.push('/profile')}>
-        <div className={style.author_user_name}> {userName}</div>
-        <img className={style.author_image} alt="User" src={userPhoto} />
+      <div className={style.author} onClick={() => history.push('/profile')}>
+        <div className={style.author__username}> {userName}</div>
+        <img className={style.author__image} alt="User" src={userPhoto} />
       </div>
-      <button className={style.log_out} onClick={pressLogOut}>
+      <button className={style.autorized__logout} onClick={pressLogOut}>
         Log Out
       </button>
     </div>

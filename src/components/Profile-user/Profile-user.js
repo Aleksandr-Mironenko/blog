@@ -36,11 +36,11 @@ const ProfileUser = ({ store, saveUserData, history }) => {
   }
 
   return (
-    <div className={style.edit_profile_body}>
-      <form className={style.edit} onSubmit={handleSubmit(pressSave)}>
-        <div className={style.edit_profile}>Edit Profile</div>
+    <div className={style.profile}>
+      <form className={style.profile__form} onSubmit={handleSubmit(pressSave)}>
+        <div className={style.profile__legend}>Edit Profile</div>
 
-        <label htmlFor="userName" className={style.edit_label}>
+        <label htmlFor="userName" className={style.label}>
           Username
         </label>
         <input
@@ -49,12 +49,12 @@ const ProfileUser = ({ store, saveUserData, history }) => {
           id="userName"
           placeholder="Username"
           name="userName"
-          className={errors.userName ? style.input_false : style.edit_input}
+          className={errors.userName ? style['input-false'] : style.input}
           autoComplete="userName"
         />
-        {errors.userName && <span>{errors.userName.message}</span>}
+        {errors.userName && <span className={style['error-message']}>{errors.userName.message}</span>}
 
-        <label htmlFor="email" className={style.edit_label}>
+        <label htmlFor="email" className={style.label}>
           Email address
         </label>
         <input
@@ -66,12 +66,12 @@ const ProfileUser = ({ store, saveUserData, history }) => {
           id="email"
           placeholder="Email address"
           name="email"
-          className={errors.email ? style.input_false : style.edit_input}
+          className={errors.email ? style['input-false'] : style.input}
           autoComplete="email"
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && <span className={style['error-message']}>{errors.email.message}</span>}
 
-        <label htmlFor="newPassword" className={style.edit_label}>
+        <label htmlFor="newPassword" className={style.label}>
           New password
         </label>
         <input
@@ -84,12 +84,12 @@ const ProfileUser = ({ store, saveUserData, history }) => {
           id="newPassword"
           placeholder="New password"
           name="newPassword"
-          className={errors.newPassword ? style.input_false : style.edit_input}
+          className={errors.newPassword ? style['input-false'] : style.input}
           autoComplete="new-password"
         />
-        {errors.newPassword && <span>{errors.newPassword.message}</span>}
+        {errors.newPassword && <span className={style['error-message']}>{errors.newPassword.message}</span>}
 
-        <label htmlFor="userPhoto" className={style.edit_label}>
+        <label htmlFor="userPhoto" className={style.label}>
           Avatar image (url)
         </label>
         <input
@@ -101,12 +101,12 @@ const ProfileUser = ({ store, saveUserData, history }) => {
           id="userPhoto"
           placeholder="Avatar image"
           name="userPhoto"
-          className={errors.userPhoto ? style.input_false : style.edit_input}
+          className={errors.userPhoto ? style['input-false'] : style.input}
           autoComplete="url"
         />
-        {errors.userPhoto && <span>{errors.userPhoto.message}</span>}
+        {errors.userPhoto && <span className={style['error-message']}>{errors.userPhoto.message}</span>}
 
-        <button type="submit" disabled={!isValid} className={style.button_save}>
+        <button type="submit" disabled={!isValid} className={style['profile__button-save']}>
           Save
         </button>
       </form>

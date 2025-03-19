@@ -19,40 +19,46 @@
   line-height: 28px;
   color: rgb(38, 38, 38); 
  }
- .label{
-  margin : 21px 0 2px;
+
+  .label{
+  margin:12px 0 2px;
   color: rgb(38, 38, 38);
+  font-family: Roboto;
   font-size: 14px;
-  height: 22px;
+  font-weight: 400;
+  line-height: 22px;
+}
+ 
+ .input{
+  border: 1px solid rgb(217, 217, 217);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 16px;
+  line-height: 24px;
  }
 
- .input{
-  min-height: 40px;
-  padding-left:  12px;
-  padding-top: 7px;
-  border-radius: 4px;
-  border: 1px solid rgb(217, 217, 217)
- }
- 
- .input:focus{
+ .input:focus {
   outline: none;
   border-color: rgb(24, 144, 255);
  }
  
-.input_false{
-  height: 40px;
+ .input-false{
   border: 1px solid rgb(245, 34, 45);
   border-radius: 4px;
-  padding: 0 12px;
+  padding: 7px 12px;
   font-size: 16px;
   line-height: 24px;
 }
 
-.input_false:focus{
+.input-false:focus{
   outline: none;
-  border-color: solid rgb(245, 34, 45); 
+  border-color: solid rgb(245, 34, 45);;
  }
- 
+
+ .error-message{
+  color:rgb(245, 34, 45)
+} 
+
  .create__tags-block{
   display: flex;
   align-items: flex-end;
@@ -61,8 +67,8 @@
  .create__tags{
   display: flex;
   flex-direction: column;
-  
  }
+
  .create__button-add{
   border: 1px solid rgb(24, 144, 255);
   border-radius: 4px;
@@ -71,7 +77,8 @@
   color:rgb(24, 144, 255);
   background-color: white;
   margin-bottom: 2px;
- }
+}
+
 .create__button-send{
   color:white;
   align-self: start;
@@ -82,7 +89,6 @@
   background: rgb(24, 144, 255);
   width: 319px;
   height: 40px;
- 
 }
 
 .create__button-send:disabled{
@@ -91,8 +97,12 @@
   border-color: rgb(117, 188, 255);
 }
  
-
-  ::placeholder{
+::placeholder{
   color:rgb(191, 191, 191);
   font-size: 16px;
- }
+}
+
+
+
+
+ 

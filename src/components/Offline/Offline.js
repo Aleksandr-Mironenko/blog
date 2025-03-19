@@ -2,7 +2,7 @@ import style from './index.module.scss'
 const Offline = () => {
   return (
     <div className={style.offline}>
-      <div className={style.text}>Интернет отсутствует</div>
+      <div className={style.offline__text}>Интернет отсутствует</div>
     </div>
   )
 }

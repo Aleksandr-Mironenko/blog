@@ -2,7 +2,7 @@ import style from './index.module.scss'
 const Loading = () => {
   return (
     <div className={style.loading}>
-      <div className={style.text}> Загрузка...</div>
+      <div className={style.loading__text}> Загрузка...</div>
     </div>
   )
 }

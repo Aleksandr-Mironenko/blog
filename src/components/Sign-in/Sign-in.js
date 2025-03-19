@@ -24,9 +24,9 @@ const SignIn = ({ history, oldUser, getPosts }) => {
   }
 
   return (
-    <div className={style.signIn_body}>
-      <form className={style.signIn} onSubmit={handleSubmit(pressLogin)}>
-        <div className={style.head}>Sign In</div>
+    <div className={style.signin}>
+      <form className={style.signin__form} onSubmit={handleSubmit(pressLogin)}>
+        <div className={style.signin__legend}>Sign In</div>
 
         <label htmlFor="email" className={style.label}>
           Email address
@@ -41,9 +41,10 @@ const SignIn = ({ history, oldUser, getPosts }) => {
           id="email"
           placeholder="Email address"
           name="email"
-          className={errors.email ? style.input_false : style.input}
+          className={errors.email ? style['input-false'] : style.input}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && <span className={style['error-message']}>{errors.email.message}</span>}
+
         <label htmlFor="password" className={style.label}>
           Password
         </label>
@@ -54,15 +55,16 @@ const SignIn = ({ history, oldUser, getPosts }) => {
           id="password"
           placeholder="Password"
           name="password"
-          className={errors.password ? style.input_false : style.input}
+          className={errors.password ? style['input-false'] : style.input}
         />
-        {errors.password && <span>{errors.password.message}</span>}
-        <button type="submit" disabled={!isValid} className={style.button_login}>
+        {errors.password && <span className={style['error-message']}>{errors.password.message}</span>}
+
+        <button type="submit" disabled={!isValid} className={style['signin__button-login']}>
           Login
         </button>
-        <div className={style.not_account}>
-          <p className={style.not_account_text}>Don’t have an account?</p>
-          <Link to="/sign-up" className={style.not_account_link}>
+        <div className={style['no-account']}>
+          <p className={style['no-account__text']}>Don’t have an account?</p>
+          <Link to="/sign-up" className={style['no-account__link']}>
             Sign Up.
           </Link>
         </div>

@@ -33,9 +33,9 @@ const SignUp = ({ history, newUser, getPosts }) => {
   }
 
   return (
-    <div className={style.signUp_body}>
-      <form className={style.signUp} onSubmit={handleSubmit(pressCreate)}>
-        <div className={style.head}>Create new account</div>
+    <div className={style.signup}>
+      <form className={style.signup__form} onSubmit={handleSubmit(pressCreate)}>
+        <div className={style.signup__legend}>Create new account</div>
         <label htmlFor="username" className={style.label}>
           Username
         </label>
@@ -49,10 +49,10 @@ const SignUp = ({ history, newUser, getPosts }) => {
           id="username"
           placeholder="Username"
           name="username"
-          className={errors.username ? style.input_false : style.input}
+          className={errors.username ? style['input-false'] : style.input}
           autoComplete="Username"
         />
-        {errors.username && <span>{errors.username.message}</span>}
+        {errors.username && <span className={style['error-message']}>{errors.username.message}</span>}
 
         <label htmlFor="email" className={style.label}>
           Email address
@@ -67,9 +67,9 @@ const SignUp = ({ history, newUser, getPosts }) => {
           id="email"
           placeholder="Email address"
           name="email"
-          className={errors.email ? style.input_false : style.input}
+          className={errors.email ? style['input-false'] : style.input}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        {errors.email && <span className={style['error-message']}>{errors.email.message}</span>}
 
         <label htmlFor="password" className={style.label}>
           Password
@@ -85,9 +85,9 @@ const SignUp = ({ history, newUser, getPosts }) => {
           id="password"
           placeholder="Password"
           name="password"
-          className={errors.password ? style.input_false : style.input}
+          className={errors.password ? style['input-false'] : style.input}
         />
-        {errors.password && <span>{errors.password.message}</span>}
+        {errors.password && <span className={style['error-message']}>{errors.password.message}</span>}
 
         <label htmlFor="repeatPassword" className={style.label}>
           Repeat Password
@@ -102,27 +102,27 @@ const SignUp = ({ history, newUser, getPosts }) => {
           id="repeatPassword"
           placeholder="Repeat Password"
           name="repeatPassword"
-          className={errors.repeatPassword ? style.input_false : style.input}
+          className={errors.repeatPassword ? style['input-false'] : style.input}
         />
-        {errors.repeatPassword && <span>{errors.repeatPassword.message}</span>}
+        {errors.repeatPassword && <span className={style['error-message']}>{errors.repeatPassword.message}</span>}
 
-        <div className={style.agree_block}>
+        <div className={style.signup__agree}>
           <input
             {...register('agree')}
             name="agree"
             type="checkbox"
             checked={agree}
             onChange={() => setValue('agree', !agree)}
-            className={style.input_agree}
+            className={style.signup__input}
           />
-          <div className={style.agreeText}>I agree to the processing of my personal information</div>
+          <div className={style['signup__agree-text']}>I agree to the processing of my personal information</div>
         </div>
-        <button disabled={!isValid || !agree} type="submit" className={style.buttton_create}>
+        <button disabled={!isValid || !agree} type="submit" className={style['signup__button-create']}>
           Create
         </button>
-        <div className={style.account}>
-          <p className={style.account_text}>Already have an account? </p>
-          <Link to="/sign-in" className={style.account_link}>
+        <div className={style['signup__there-are-accounts']}>
+          <p className={style['signup__there-are-accounts-text']}>Already have an account? </p>
+          <Link to="/sign-in" className={style['signup__there-are-accounts-link']}>
             Sign In.
           </Link>
         </div>
