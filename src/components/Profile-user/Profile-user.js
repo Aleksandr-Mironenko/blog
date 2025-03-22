@@ -2,10 +2,10 @@ import { connect } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { withRouter, Redirect } from 'react-router-dom'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
-const ProfileUser = ({ store, saveUserData, history }) => {
+const ProfileUser = ({ store, editProfile, history }) => {
   const { userName, emailAddress, userPhoto, token, authorized } = store
 
   const {
@@ -18,7 +18,7 @@ const ProfileUser = ({ store, saveUserData, history }) => {
   })
 
   const pressSave = (data) => {
-    saveUserData({
+    editProfile({
       userName: data.userName,
       email: data.email,
       password: data.password,

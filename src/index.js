@@ -8,7 +8,7 @@ import { thunk as reduxThunk } from 'redux-thunk'
 // import history from './components/history'
 import delayMiddleware from './components/delayMiddleware'
 import loadingMiddleware from './components/loadingMiddleware'
-import reducer from './components/reducer'
+import reducer from './redux/reducer'
 import App from './components/App'
 import history from './components/history'
 

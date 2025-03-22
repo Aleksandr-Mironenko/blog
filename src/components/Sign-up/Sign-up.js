@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 

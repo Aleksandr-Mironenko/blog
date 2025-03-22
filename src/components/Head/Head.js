@@ -2,8 +2,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import actions from '../actions'
-import HeaderLogIn from '../Header-log-in'
+import actions from '../../redux/actions'
+import UserBlock from '../User-block'
 import HeaderLogOut from '../Header-log-out'
 
 import style from './index.module.scss'
@@ -11,7 +11,7 @@ import style from './index.module.scss'
 const Head = ({ store, history }) => {
   const { authorized } = store
 
-  const headerUser = authorized ? <HeaderLogIn /> : <HeaderLogOut />
+  const headerUser = authorized ? <UserBlock /> : <HeaderLogOut />
 
   return (
     <header className={style.header}>

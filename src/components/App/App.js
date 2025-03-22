@@ -4,9 +4,10 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import СonfirmationOfDeletionElement from '../Сonfirmation-of-deletion-element'
 import BodyBlog from '../Body-blog'
-import actions from '../actions'
 import BlogFullElementAuthorized from '../Blog-full-element-authorized'
-import CreateEditBlogElement from '../CreateEditBlogElement'
+// import CreateEditBlogElement from '../CreateEditBlogElement'
+import CreateBlogElement from '../Create-blog-element'
+import EditBlogElement from '../Edit-blog-element'
 import ProfileUser from '../Profile-user'
 import SignUp from '../Sign-up'
 import SignIn from '../Sign-in'
@@ -16,10 +17,11 @@ import history from '../history'
 import Loading from '../Loading'
 import Error from '../Error'
 import Offline from '../Offline'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 
-const App = ({ store, getPosts, getCookie, listenerOnline, listenerOffline, sizeMonitor }) => {
+const App = ({ store, getPosts, getToken, listenerOnline, listenerOffline, sizeMonitor }) => {
   const { authorized, posts, page, loading, offline, error } = store
 
   useEffect(() => {
@@ -27,8 +29,8 @@ const App = ({ store, getPosts, getCookie, listenerOnline, listenerOffline, size
   }, [getPosts, page])
 
   useEffect(() => {
-    getCookie('token')
-  }, [getCookie])
+    getToken()
+  }, [getToken])
 
   useEffect(() => {
     listenerOnline()
@@ -63,7 +65,7 @@ const App = ({ store, getPosts, getCookie, listenerOnline, listenerOffline, size
             <Switch>
               <Route path="/profile" exact component={ProfileUser} />
 
-              <Route path="/new-article" exact component={CreateEditBlogElement} />
+              <Route path="/new-article" exact component={CreateBlogElement} />
 
               <Route path="/sign-in" exact component={SignIn} />
 
@@ -73,7 +75,7 @@ const App = ({ store, getPosts, getCookie, listenerOnline, listenerOffline, size
                 path="/articles/:id/edit"
                 render={({ match }) => {
                   const id = match.params.id
-                  return authorized ? <CreateEditBlogElement {...posts[id]} /> : <Redirect to="/articles" />
+                  return authorized ? <EditBlogElement {...posts[id]} /> : <Redirect to="/articles" />
                 }}
               />
 

@@ -74,13 +74,7 @@ const reducer = (state = initialState, action) => {
         userPhoto: '',
       }
     }
-    case 'HAVE_TOKEN': {
-      return {
-        ...state,
-        token: action.token,
-        authorized: true,
-      }
-    }
+
     case 'CHANGE_FAVORITE': {
       return {
         ...state,

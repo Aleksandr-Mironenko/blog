@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 

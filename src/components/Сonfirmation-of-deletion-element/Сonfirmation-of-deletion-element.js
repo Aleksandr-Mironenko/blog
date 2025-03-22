@@ -1,7 +1,7 @@
 import { withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import arrow from './arrow.svg'
 import allert from './allert.png'

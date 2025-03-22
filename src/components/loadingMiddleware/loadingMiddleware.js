@@ -1,4 +1,4 @@
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 const loadingMiddleware = (history) => (store) => {
   const { loadStart, loadEnd } = actions

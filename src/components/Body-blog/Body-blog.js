@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import React from 'react'
 import { Pagination, Stack } from '@mui/material'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 import BlogElement from '../Blog-element'
 
 import style from './index.module.scss'

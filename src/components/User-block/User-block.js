@@ -1,15 +1,15 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 
-const HeaderLogIn = ({ store, history, logOutCookie }) => {
+const UserBlock = ({ store, history, logOutLocalStorage }) => {
   const { userName, userPhoto } = store
 
   const pressLogOut = () => {
-    logOutCookie()
+    logOutLocalStorage()
     history.push('/articles')
   }
 
@@ -30,4 +30,4 @@ const HeaderLogIn = ({ store, history, logOutCookie }) => {
 }
 
 const mapStateToProps = (state) => ({ store: state })
-export default withRouter(connect(mapStateToProps, actions)(HeaderLogIn))
+export default withRouter(connect(mapStateToProps, actions)(UserBlock))

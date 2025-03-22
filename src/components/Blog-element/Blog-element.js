@@ -1,7 +1,7 @@
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 import white from './transparent.svg'

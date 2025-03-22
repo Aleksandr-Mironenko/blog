@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { connect } from 'react-redux'
 
-import actions from '../actions'
+import actions from '../../redux/actions'
 
 import white from './transparent.svg'
 import red from './red.svg'

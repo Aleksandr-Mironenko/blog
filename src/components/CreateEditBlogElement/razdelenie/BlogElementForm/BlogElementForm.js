@@ -1,25 +1,10 @@
+import React from 'react'
 import { useForm } from 'react-hook-form'
-import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router-dom'
 
-import actions from '../../redux/actions'
-import AddTag from '../AddTag'
+import AddTag from '../../../AddTag'
+import style from '../../index.module.scss'
 
-import style from './index.module.scss'
-
-const CreateEditBlogElement = ({
-  store,
-  history,
-  title,
-  tagList,
-  description,
-  slug,
-  body = '',
-  updateArticle,
-  createPost,
-}) => {
-  const { token, authorized } = store
-
+const BlogElementForm = ({ defaultValues, onSubmit }) => {
   const {
     register,
     handleSubmit,
@@ -28,12 +13,7 @@ const CreateEditBlogElement = ({
     formState: { errors, isValid },
   } = useForm({
     mode: 'onChange',
-    defaultValues: {
-      title: title ? title : '',
-      description: description ? description : '',
-      text: body ? body : '',
-      tagList: tagList ? tagList : [''],
-    },
+    defaultValues,
   })
 
   const tagsList = watch('tagList')
@@ -48,44 +28,25 @@ const CreateEditBlogElement = ({
     setValue('tagList', newTags)
   }
 
-  const tagsElements = tagsList.map((item, index) => {
-    return <AddTag key={index} item={item} index={index} addTags={addTags} deleteTags={deleteTags} />
-  })
-
-  const fiterTagsList = tagsList.filter((item) => item !== '' && item !== ' ')
-
-  const checkEditOrCreate = title || description || body || tagList
-  const pressSend = (data) => {
-    const post = {
-      title: data.title,
-      tagList: fiterTagsList,
-      text: data.text,
-      slug: slug,
-      description: data.description,
-      token: token,
-    }
-
-    if (checkEditOrCreate) {
-      updateArticle(post)
-    } else {
-      createPost(post)
-    }
-    history.push('/articles')
-  }
+  const tagsElements = tagsList.map((item, index) => (
+    <AddTag key={index} item={item} index={index} addTags={addTags} deleteTags={deleteTags} />
+  ))
 
   const addTagInTagList = () => {
     const newTags = [...tagsList, '']
     setValue('tagList', newTags)
   }
 
-  if (!authorized) {
-    return <Redirect to="/articles" />
+  const fiterTagsList = tagsList.filter((item) => item !== '' && item !== ' ')
+
+  const handleFormSubmit = (data) => {
+    onSubmit({ ...data, tagList: fiterTagsList })
   }
 
   return (
     <div className={style.create}>
-      <form onSubmit={handleSubmit(pressSend)} className={style.create__form}>
-        <div className={style.create__legend}>{checkEditOrCreate ? 'Edit article' : 'Create new article'}</div>
+      <form onSubmit={handleSubmit(handleFormSubmit)} className={style.create__form}>
+        <div className={style.create__legend}>{defaultValues.slug ? 'Edit article' : 'Create new article'}</div>
         <label htmlFor="title" className={style.label}>
           Title
         </label>
@@ -108,7 +69,7 @@ const CreateEditBlogElement = ({
           type="text"
           id="description"
           name="description"
-          placeholder="Title"
+          placeholder="Description"
           className={errors.description ? style['input-false'] : style.input}
           autoComplete="description"
         />
@@ -146,5 +107,4 @@ const CreateEditBlogElement = ({
   )
 }
 
-const mapStateToProps = (state) => ({ store: state })
-export default withRouter(connect(mapStateToProps, actions)(CreateEditBlogElement))
+export default BlogElementForm

@@ -1,4 +1,4 @@
-import actions from '../actions'
+import actions from '../../redux/actions'
 export const delayMiddleware = (store) => (next) => (action) => {
   const { loadStart, loadEnd } = actions
   const delayMs = action?.meta?.delayMs
