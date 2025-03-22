@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Redirect } from 'react-router-dom'
 
 import actions from '../../redux/actions'
-import BlogForm from '../BlogElementForm'
+import BlogForm from '../Blog-element-form'
 
 const EditBlogElement = ({ store, history, updateArticle, title, tagList, description, slug, body = '' }) => {
   const { token, authorized } = store

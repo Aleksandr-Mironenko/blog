@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-import AddTag from '../AddTag'
+import AddTag from '../Add-tag'
 
 import style from './index.module.scss'
 

@@ -8,7 +8,7 @@ import white from './transparent.svg'
 import red from './red.svg'
 import style from './index.module.scss'
 
-const BlogFullElementAuthorized = ({
+const BlogFullElement = ({
   store,
   tagList = [],
   title,
@@ -117,4 +117,4 @@ const BlogFullElementAuthorized = ({
   )
 }
 const mapStateToProps = (state) => ({ store: state })
-export default withRouter(connect(mapStateToProps, actions)(BlogFullElementAuthorized))
+export default withRouter(connect(mapStateToProps, actions)(BlogFullElement))

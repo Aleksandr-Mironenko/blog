@@ -4,7 +4,7 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import СonfirmationOfDeletionElement from '../Сonfirmation-of-deletion-element'
 import BodyBlog from '../Body-blog'
-import BlogFullElementAuthorized from '../Blog-full-element-authorized'
+import BlogFullElement from '../Blog-full-element'
 // import CreateEditBlogElement from '../CreateEditBlogElement'
 import CreateBlogElement from '../Create-blog-element'
 import EditBlogElement from '../Edit-blog-element'
@@ -87,7 +87,7 @@ const App = ({ store, getPosts, getToken, listenerOnline, listenerOffline, sizeM
 
                   return (
                     <>
-                      <BlogFullElementAuthorized {...posts[id]} />
+                      <BlogFullElement {...posts[id]} />
                       <СonfirmationOfDeletionElement {...posts[id]} />
                     </>
                   )
@@ -99,7 +99,7 @@ const App = ({ store, getPosts, getToken, listenerOnline, listenerOffline, sizeM
                 exact
                 render={({ match }) => {
                   const id = match.params.id
-                  return <BlogFullElementAuthorized {...posts[id]} />
+                  return <BlogFullElement {...posts[id]} />
                 }}
               />
 
