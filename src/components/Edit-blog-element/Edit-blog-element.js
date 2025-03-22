@@ -32,6 +32,7 @@ const EditBlogElement = ({ store, history, updateArticle, title, tagList, descri
         description: description,
         text: body,
         tagList: tagList,
+        slug: slug,
       }}
       onSubmit={handleSubmit}
     />
