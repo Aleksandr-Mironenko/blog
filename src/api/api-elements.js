@@ -1,7 +1,7 @@
-const baseurl = 'https://blog-platform.kata.academy/api/'
+const baseurl = 'https://blog-platform.kata.academy/api'
 
 export const getBlogElements = async (page = 1) => {
-  const response = await fetch(`${baseurl}articles?limit=5&offset=${(page - 1) * 5}`)
+  const response = await fetch(`${baseurl}/articles?limit=5&offset=${(page - 1) * 5}`)
 
   if (!response.ok) {
     throw new Error('Не удалось загрузить посты')
@@ -12,7 +12,7 @@ export const getBlogElements = async (page = 1) => {
 }
 
 export const createBlogElement = async (data) => {
-  const response = await fetch(`${baseurl}articles`, {
+  const response = await fetch(`${baseurl}/articles`, {
     method: 'POST',
     headers: {
       Authorization: `Token ${data.token}`,
@@ -34,7 +34,7 @@ export const createBlogElement = async (data) => {
 }
 
 export const deleteBlogElement = async (slug, token) => {
-  const response = await fetch(`${baseurl}articles/${slug}`, {
+  const response = await fetch(`${baseurl}/articles/${slug}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Token ${token}`,
@@ -47,7 +47,7 @@ export const deleteBlogElement = async (slug, token) => {
 }
 
 export const updateBlogElement = async (data) => {
-  const response = await fetch(`${baseurl}articles/${data.slug} `, {
+  const response = await fetch(`${baseurl}/articles/${data.slug} `, {
     method: 'PUT',
     headers: {
       Authorization: `Token ${data.token}`,

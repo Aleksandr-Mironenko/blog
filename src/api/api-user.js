@@ -1,4 +1,4 @@
-const baseurl = 'https://blog-platform.kata.academy/api/'
+const baseurl = 'https://blog-platform.kata.academy/api'
 
 export const createUser = async (data) => {
   const response = await fetch(`${baseurl}/users`, {
@@ -18,7 +18,7 @@ export const createUser = async (data) => {
 }
 
 export const editUser = async (data) => {
-  const response = await fetch(`${baseurl}user`, {
+  const response = await fetch(`${baseurl}/user`, {
     method: 'PUT',
     headers: {
       Authorization: `Token ${data.token}`,
@@ -44,7 +44,7 @@ export const editUser = async (data) => {
 }
 
 export const checkUser = async (data) => {
-  const response = await fetch(`${baseurl}users/login`, {
+  const response = await fetch(`${baseurl}/users/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const checkUser = async (data) => {
 }
 
 export const loginToken = async (token) => {
-  const response = await fetch(`${baseurl}user`, {
+  const response = await fetch(`${baseurl}/user`, {
     method: 'GET',
     headers: {
       Authorization: `Token ${token}`,

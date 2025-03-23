@@ -1,7 +1,7 @@
-const baseurl = 'https://blog-platform.kata.academy/api/'
+const baseurl = 'https://blog-platform.kata.academy/api'
 
 export const like = async (slug, token) => {
-  const response = await fetch(`${baseurl}articles/${slug}/favorite`, {
+  const response = await fetch(`${baseurl}/articles/${slug}/favorite`, {
     method: 'POST',
     headers: {
       Authorization: `Token ${token}`,
@@ -17,7 +17,7 @@ export const like = async (slug, token) => {
 }
 
 export const deleteLike = async (slug, token) => {
-  const response = await fetch(`${baseurl}articles/${slug}/favorite`, {
+  const response = await fetch(`${baseurl}/articles/${slug}/favorite`, {
     method: 'DELETE',
     headers: {
       Authorization: `Token ${token}`,
