@@ -44,7 +44,7 @@ export const editUser = async (data) => {
 }
 
 export const checkUser = async (data) => {
-  const response = await fetch(`${baseurl}/users/login`, {
+  const response = await fetch(`${baseurl}users/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
