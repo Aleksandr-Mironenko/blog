@@ -5,7 +5,8 @@ import actions from '../../redux/actions'
 
 import style from './index.module.scss'
 
-const Error = ({ history, errorFetch }) => {
+const Error = ({ store, history, errorFetch }) => {
+  const { errorMessage } = store
   const noError = (event) => {
     event.preventDefault()
     errorFetch(false)
@@ -13,7 +14,11 @@ const Error = ({ history, errorFetch }) => {
   }
   return (
     <div className={style.error}>
-      <div className={style.error__text}>Произошла ошибка. Вам точно поможет наша кнопка</div>
+      <div className={style.error__text}>
+        <div>Произошла ошибка. </div>
+        {errorMessage}
+        <div> Вам может помочь наша кнопка</div>
+      </div>
       <button type="button" className={style.error__button} onClick={noError}>
         Наша кнопка
       </button>

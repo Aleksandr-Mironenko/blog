@@ -1,7 +1,7 @@
-.error{ 
+.error {
   margin: 26px auto;
-  height:  140px;
-  width: 941px ;
+  height: 140px;
+  width: 941px;
   background-color: white;
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -9,22 +9,22 @@
   align-items: center;
   justify-content: center;
 }
- 
-.error__text{
+
+.error__text {
   font-size: 24px;
-  width: 300px;
-   box-sizing: content-box;
+  max-width: 500px;
+  box-sizing: content-box;
 }
+
 .error__button {
-  margin:0 18px;
+  margin: 0 18px;
   font-family: Roboto;
-font-size: 16px;
-border: 1px solid rgb(24, 144, 255);
-border-radius: 4px;
-width: 118px;
-height: 40px;
-background-color: white;
-color:rgb(24, 144, 255);
+  font-size: 16px;
+  border: 1px solid rgb(24, 144, 255);
+  border-radius: 4px;
+  width: 118px;
+  height: 40px;
+  background-color: white;
+  color: rgb(24, 144, 255);
 
 }
- 

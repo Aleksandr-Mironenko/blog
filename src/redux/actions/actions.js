@@ -8,7 +8,7 @@ export const sizeMonitor = (size = window.innerWidth) => ({ type: 'SIZE_MONITOR'
 export const pushPosts = (posts) => ({ type: 'PUSH_POSTS', posts })
 export const loadEnd = () => ({ type: 'LOAD_END' })
 export const loadStart = () => ({ type: 'LOAD_START' })
-export const errorFetch = (bool) => ({ type: 'ERROR_FETCH', bool })
+export const errorFetch = (bool, message) => ({ type: 'ERROR_FETCH', bool, message })
 export const changePage = (page) => ({ type: 'CHANGE_PAGE', page, meta: { delayMs: 1000 } }) //можно было добавить всем meta
 export const offline = (bool) => ({ type: 'OFFLINE', bool })
 export const changeFavorire = (bool, id) => ({ type: 'CHANGE_FAVORITE', bool, id })
@@ -66,28 +66,28 @@ const formatter = (array) => {
   })
 }
 
-export const newUser = (data, retries = 5) => {
+export const newUser = (data, message = '', retries = 5) => {
   return async (dispatch) => {
+    if (retries <= 0) {
+      dispatch(loadEnd())
+      dispatch(errorFetch(true, message))
+      return
+    }
     try {
       const content = await createUser(data)
       dispatch(isAvtorized(content))
       localStorage.setItem('token', JSON.stringify(content.user.token))
     } catch (error) {
-      if (retries <= 0) {
-        dispatch(loadEnd())
-        dispatch(errorFetch(true))
-        return
-      }
-      dispatch(newUser(data, retries - 1))
+      dispatch(newUser(data, error.message, retries - 1))
     }
   }
 }
 
-export const editProfile = (data, retries = 5) => {
+export const editProfile = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
@@ -95,16 +95,16 @@ export const editProfile = (data, retries = 5) => {
       dispatch(login(content.user))
       dispatch(getPosts())
     } catch (error) {
-      dispatch(editProfile(data, retries - 1))
+      dispatch(editProfile(data, error.message, retries - 1))
     }
   }
 }
 
-export const oldUser = (data, retries = 5) => {
+export const oldUser = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
@@ -112,7 +112,7 @@ export const oldUser = (data, retries = 5) => {
       dispatch(login(content.user))
       localStorage.setItem('token', JSON.stringify(content.user.token))
     } catch (error) {
-      dispatch(oldUser(data, retries - 1))
+      dispatch(oldUser(data, error.message, retries - 1))
     }
   }
 }
@@ -124,13 +124,13 @@ export const logOutLocalStorage = () => {
   }
 }
 
-export const getPosts = (page, retries = 5) => {
+export const getPosts = (page, message = '', retries = 5) => {
   return async (dispatch) => {
     dispatch(loadStart)
 
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
@@ -138,16 +138,16 @@ export const getPosts = (page, retries = 5) => {
       const posts = formatter(content.articles)
       dispatch(pushPosts(posts))
     } catch (error) {
-      dispatch(getPosts(page, retries - 1)) //
+      dispatch(getPosts(page, error.message, retries - 1)) //
     }
   }
 }
 
-export const dataPoToken = (token, retries = 5) => {
+export const dataPoToken = (token, message, retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
@@ -155,7 +155,7 @@ export const dataPoToken = (token, retries = 5) => {
       dispatch(login(content.user))
       dispatch(getPosts())
     } catch (error) {
-      dispatch(getPosts(token, retries - 1)) //
+      dispatch(getPosts(token, error.message, retries - 1)) //
     }
   }
 }
@@ -171,75 +171,75 @@ export const getToken = () => {
   }
 }
 
-export const createPost = (data, retries = 5) => {
+export const createPost = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
       await createBlogElement(data)
       dispatch(getPosts(1))
     } catch (error) {
-      dispatch(createPost(data, retries - 1))
+      dispatch(createPost(data, error.message, retries - 1))
     }
   }
 }
 
-export const deletePost = (slug, token, retries = 5) => {
+export const deletePost = (slug, token, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
       await deleteBlogElement(slug, token)
       dispatch(getPosts(1))
     } catch (error) {
-      dispatch(deletePost(slug, token, retries - 1))
+      dispatch(deletePost(slug, token, error.message, retries - 1))
     }
   }
 }
 
-export const updateArticle = (data, retries = 5) => {
+export const updateArticle = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
       await updateBlogElement(data)
       dispatch(getPosts(1))
     } catch (error) {
-      dispatch(updateArticle(data, retries - 1))
+      dispatch(updateArticle(data, error.message, retries - 1))
     }
   }
 }
 
-export const favorite = (slug, token, id, retries = 5) => {
+export const favorite = (slug, token, id, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
     try {
       const content = await like(slug, token)
       dispatch(changeFavorire(content.article.favorited, id))
     } catch (error) {
-      dispatch(favorite(slug, token, id, retries - 1))
+      dispatch(favorite(slug, token, id, error.message, retries - 1))
     }
   }
 }
 
-export const noFavorite = (slug, token, id, retries = 5) => {
+export const noFavorite = (slug, token, id, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
-      dispatch(errorFetch(true))
+      dispatch(errorFetch(true, message))
       return
     }
 
@@ -248,7 +248,7 @@ export const noFavorite = (slug, token, id, retries = 5) => {
       dispatch(changeFavorire(content.article.favorited, id))
       dispatch(getPosts(1))
     } catch (error) {
-      dispatch(noFavorite(slug, token, id, retries - 1))
+      dispatch(noFavorite(slug, token, id, error.message, retries - 1))
     }
   }
 }

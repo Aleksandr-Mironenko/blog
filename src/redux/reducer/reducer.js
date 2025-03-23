@@ -1,6 +1,7 @@
 const initialState = {
   authorized: false,
   error: false,
+  errorMessage: '',
   loginError: false,
   loading: false,
   offline: false,
@@ -21,7 +22,7 @@ const reducer = (state = initialState, action) => {
       return { ...state, posts: [...action.posts] }
     }
     case 'ERROR_FETCH': {
-      return { ...state, error: action.bool }
+      return { ...state, error: action.bool, errorMessage: action.message }
     }
     case 'LOAD_START': {
       return { ...state, loading: true }

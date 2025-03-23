@@ -1,7 +1,6 @@
 const baseurl = 'https://blog-platform.kata.academy/api/'
 
 export const like = async (slug, token) => {
-  console.log('связаны')
   const response = await fetch(`${baseurl}articles/${slug}/favorite`, {
     method: 'POST',
     headers: {
@@ -10,10 +9,9 @@ export const like = async (slug, token) => {
   })
 
   if (!response.ok) {
-    throw new Error('Failed to like post')
+    throw new Error('Не удалось поставить отметку')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
@@ -27,10 +25,9 @@ export const deleteLike = async (slug, token) => {
   })
 
   if (!response.ok) {
-    throw new Error('Failed to dislike post')
+    throw new Error('Не удалось снять отметку')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }

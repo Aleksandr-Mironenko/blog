@@ -1,13 +1,12 @@
 const baseurl = 'https://blog-platform.kata.academy/api/'
 
 export const getBlogElements = async (page) => {
-  const response = await fetch(`${baseurl}/articles?limit=5&offset=${(page - 1) * 5}`)
+  const response = await fetch(`${baseurl}articles?limit=5&offset=${(page - 1) * 5}`)
 
   if (!response.ok) {
-    throw new Error()
+    throw new Error('Не удалось загрузить посты')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
@@ -30,9 +29,7 @@ export const createBlogElement = async (data) => {
   })
 
   if (!response.ok) {
-    throw new Error()
-  } else {
-    console.log('СОЗДАНИЕ ПОСТА ВЫПОЛНЕНО')
+    throw new Error('Не удалось создать пост')
   }
 }
 
@@ -45,12 +42,10 @@ export const deleteBlogElement = async (slug, token) => {
   })
 
   if (!response.ok && response.statusText !== 'No Content') {
-    console.log('ОШИБА ЭТА СРАНАЯ')
-    throw new Error('ОШИБКА В deleteBlogElement')
-  } else {
-    console.log('УДАЛЕНИЕ ПОСТА ВЫПОЛНЕНО')
+    throw new Error('Не удалось удалить пост')
   }
 }
+
 export const updateBlogElement = async (data) => {
   const response = await fetch(`${baseurl}articles/${data.slug} `, {
     method: 'PUT',
@@ -69,8 +64,6 @@ export const updateBlogElement = async (data) => {
   })
 
   if (!response.ok) {
-    throw new Error()
-  } else {
-    console.log('ОБНОВЛЕНИЕ ПОСТА ВЫПОЛНЕНО')
+    throw new Error('Не удалось отредактировать пост')
   }
 }

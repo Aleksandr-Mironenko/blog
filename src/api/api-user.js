@@ -10,10 +10,9 @@ export const createUser = async (data) => {
   })
 
   if (!response.ok) {
-    throw new Error()
+    throw new Error('Не удалось зарегистрироваться')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
@@ -37,10 +36,9 @@ export const editUser = async (data) => {
   })
 
   if (!response.ok) {
-    throw new Error()
+    throw new Error('Не удалось отредактировать профиль')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
@@ -55,10 +53,9 @@ export const checkUser = async (data) => {
   })
 
   if (!response.ok) {
-    throw new Error()
+    throw new Error('Не удалось войти в профиль')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
@@ -72,10 +69,9 @@ export const loginToken = async (token) => {
   })
 
   if (!response.ok) {
-    throw new Error()
+    throw new Error('Не удалось получить данные по токену')
   } else {
     const result = await response.json()
-    console.log(result)
     return result
   }
 }
