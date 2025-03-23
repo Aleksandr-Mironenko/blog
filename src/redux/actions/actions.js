@@ -70,6 +70,9 @@ export const newUser = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось зарегистрироваться'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -87,6 +90,9 @@ export const editProfile = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось отредактировать профиль'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -104,6 +110,9 @@ export const oldUser = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось войти в профиль'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -127,9 +136,11 @@ export const logOutLocalStorage = () => {
 export const getPosts = (page, message = '', retries = 5) => {
   return async (dispatch) => {
     dispatch(loadStart)
-
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось загрузить посты'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -147,6 +158,9 @@ export const dataPoToken = (token, message, retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось получить данные по токену'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -175,6 +189,9 @@ export const createPost = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось создать пост'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -191,6 +208,9 @@ export const deletePost = (slug, token, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось удалить пост'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -207,6 +227,9 @@ export const updateArticle = (data, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось отредактировать пост'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -223,6 +246,9 @@ export const favorite = (slug, token, id, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось поставить отметку'
+      }
       dispatch(errorFetch(true, message))
       return
     }
@@ -239,6 +265,9 @@ export const noFavorite = (slug, token, id, message = '', retries = 5) => {
   return async (dispatch) => {
     if (retries <= 0) {
       dispatch(loadEnd())
+      if (message === 'Failed to fetch') {
+        message = 'Не удалось снять отметку'
+      }
       dispatch(errorFetch(true, message))
       return
     }
