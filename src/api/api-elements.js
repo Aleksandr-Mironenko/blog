@@ -1,6 +1,6 @@
 const baseurl = 'https://blog-platform.kata.academy/api/'
 
-export const getBlogElements = async (page) => {
+export const getBlogElements = async (page = 1) => {
   const response = await fetch(`${baseurl}articles?limit=5&offset=${(page - 1) * 5}`)
 
   if (!response.ok) {
